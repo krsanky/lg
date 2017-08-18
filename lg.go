@@ -1,6 +1,7 @@
 package lg
 
 import (
+	"fmt"
 	"log"
 	"os"
 
@@ -9,10 +10,12 @@ import (
 
 var Log *log.Logger
 
-func init() {
-	f, err := os.OpenFile(config.Get("log_file"), os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
+func Init() {
+	log_file := config.Get("log_file")
+	fmt.Printf("log_file:%s\n", log_file)
+	f, err := os.OpenFile(log_file, os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
 	if err != nil {
-		panic("error opening file: logfile.txt")
+		panic(fmt.Sprintf("error opening file:%s"))
 	}
 	//defer f.Close()
 

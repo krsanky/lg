@@ -10,7 +10,7 @@ import (
 
 var Log *log.Logger
 
-func Init() {
+func init() {
 	log_file := config.Get("log_file")
 	fmt.Printf("log_file:%s\n", log_file)
 	f, err := os.OpenFile(log_file, os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
